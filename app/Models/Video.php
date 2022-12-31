@@ -2,15 +2,20 @@
 
 namespace App\Models;
 
+use App\Traits\HasSlug;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Transaction extends Model
+class Video extends Model
 {
-    use HasFactory;
-    
-   	protected $fillable = [
-        'user_id', 'invoice', 'name', 'status', 'grand_total', 'snap_token'
+    use HasFactory, HasSlug;
+
+    protected $fillable = [
+        'course_id', 'name', 'slug', 'episode', 'intro', 'video_code'
     ];
 
+    public function course()
+    {
+        return $this->belongsTo(Course::class);
+    }
 }
