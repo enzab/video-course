@@ -33,7 +33,7 @@
 
         @include('sweetalert::alert')
 
-        @include('layouts.backed.partials.footer')
+        @include('layouts.backend.partials.footer')
     </div>    
 
     <!-- jQuery -->
