@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Admin\CategoryController;
+use App\Http\Controllers\Admin\CourseController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Models\Course;
 
 /*
 |--------------------------------------------------------------------------
@@ -25,4 +27,5 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'r
     Route::get('/dashboard', DashboardController::class)->name('dashboard');
     // admin category route
     Route::resource('/category', CategoryController::class);
+    Route::resource('/course', CourseController::class);
 });

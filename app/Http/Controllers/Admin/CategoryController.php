@@ -127,7 +127,7 @@ class CategoryController extends Controller
         // hapus image category berdasarkan id
         Storage::disk('local')->delete('public/categories/'.basename($category->image));
 
-        
+
         // hapus data category berdasarkan id
         $category->delete();
 
