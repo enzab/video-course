@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Models\Course;
 use app\Http\Controllers\Admin\ShowcaseController;
 use App\Http\Controllers\Admin\MyCourseController;
+use App\Http\Controllers\Admin\VideoController;
 
 /*
 |--------------------------------------------------------------------------
@@ -32,4 +33,13 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'r
     // admin course route
     Route::resource('/course', CourseController::class);
     Route::get('/my-course', MyCourseController::class)->name('mycourse');
+    // admin video route
+    Route::controller(VideoController::class)->as('video.')->group(function(){
+        Route::get('/{course:slug}/video', 'index')->name('index');
+        Route::get('/{course:slug}/create', 'create')->name('create');
+        Route::post('/{course:slug}/store', 'store')->name('store');
+        Route::get('/edit/{course:slug}/{video}', 'edit')->name('edit');
+        Route::put('/update/{course:slug}/{video}', 'update')->name('update');
+        Route::delete('/delete/{video}', 'destroy')->name('destroy');
+    });
 });
