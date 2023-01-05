@@ -1,4 +1,4 @@
-<a href="{{ $url }}" onclick="deleteData({{ $id }})" class="btn btn-danger btn-sm">
+<a href="#" onclick="deleteData({{ $id }})" class="btn btn-danger btn-sm">
     <i class="fas fa-trash"></i>
     Delete
 </a>

@@ -62,8 +62,9 @@
                     confirmButton: 'btn btn-success',
                     cancelButton: 'btn btn-danger'
                 },
-                buttonStyling: true
+                buttonsStyling: true
             })
+
             swalWithBootstrapButtons.fire({
                 title: 'Are you sure want delete this?',
                 icon: 'warning',
@@ -74,12 +75,14 @@
             }).then((result) => {
                 if (result.value) {
                     event.preventDefault();
-                    decoument.getElementById('delete-form-' + id).submit();
+                    document.getElementById('delete-form-' + id).submit();
+
                 } else if (
+                    /* Read more about handling dismissals below */
                     result.dismiss === Swal.DismissReason.cancel
                 ) {
                     swalWithBootstrapButtons.fire(
-                        'Your data still save!',
+                        'Your data still save !',
                         '',
                         'error'
                     )
