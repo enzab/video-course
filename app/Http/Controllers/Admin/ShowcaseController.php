@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\Controller;
+use App\Models\Showcase;
 use Illuminate\Http\Request;
-use App\Models\TransactionDetail;
+use App\Http\Controllers\Controller;
 
 class ShowcaseController extends Controller
 {
@@ -16,22 +16,13 @@ class ShowcaseController extends Controller
      */
     public function __invoke(Request $request)
     {
-        // tampung data user yang sedang login kedalam variable $user
-        $user = $request->user();
-
         /*
-            tampung data transaction detail kedalam variable $courses, kemudian kita memanggil relasi menggunakan with,
-            selanjutnya kita melakukan sebuah query untuk mengambil data transaction yang memiliki status success dan seusai dengan user yang sedang login, selanjutnya kita juga melakukan query untuk pencarian data berdasarkan course name, kemudiang kita pecah data transaction detail yang kita tampilkan hanya 3 per halaman dengan urutan terbaru.
+            tampung seluruh data showcase kedalam variabel $showcases, kemudian kita memanggil relasi				menggunakan with, selanjutnya kita pecah data showcase yang kita tampilkan hanya 9 per halaman
+            dengan urutan terbaru.
         */
+        $showcases = Showcase::with('user', 'course')->latest()->paginate(9);
 
-        $courses = TransactionDetail::with('transaction', 'course.review')
-                    ->whereHas('transaction', function($query) use($user) {
-                        $query->where('user_id', $user->id)->where('status', 'success');
-                    })->whereHas('course', function($query) {
-                        $query->where('name', 'like', '%'. request()->search . '%');
-                    })->latest()->paginate(3);
-
-        // passing variable $courses kedalam view
-        return view('admin.course.mycourse', compact('courses'));
+        // passing variabel $showcases kedalam view.
+        return view('admin.showcase.index', compact('showcases'));
     }
 }
