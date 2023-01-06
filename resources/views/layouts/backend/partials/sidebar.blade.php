@@ -120,7 +120,7 @@
                 </li>
                 <li class="nav-header">Transaction</li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('admin.transaction.index') }}" class="nav-link">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-receipt nav-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <path
@@ -134,7 +134,7 @@
                 </li>
                 <li class="nav-header">User Management</li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('admin.user.index') }}" class="nav-link {{ active('admin.user.index') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-users nav-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <circle cx="9" cy="7" r="4"></circle>
@@ -148,7 +148,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a href="" class="nav-link">
+                    <a href="{{ route('admin.user.profile') }}" class="nav-link {{ active('admin.user.profile') }}">
                         <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle nav-icon" width="24" height="24" viewBox="0 0 24 24" stroke-width="1.25" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                             <circle cx="12" cy="12" r="9"></circle>
