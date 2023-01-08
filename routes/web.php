@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
 use App\Http\Controllers\Member\CourseController as MemberCourseController;
+use App\Http\Controllers\Member\MyCourseController as MemberMyCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -64,5 +65,6 @@ Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth',
     // member dashboard route
     Route::get('/dashboard', MemberDashboardController::class)->name('dashboard');
     // member course route
+    Route::get('/my-course', MemberMyCourseController::class)->name('mycourse');
     Route::resource('/course', MemberCourseController::class)->middleware('role:author');
 });
