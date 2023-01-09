@@ -19,6 +19,7 @@ use App\Http\Controllers\Member\VideoController as MemberVideoController;
 use App\Http\Controllers\Member\ShowcaseController as MemberShowcaseController;
 use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
 use App\Http\Controllers\Member\ProfileController as MemberProfileController;
+use App\Http\Controllers\HomeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,9 +32,11 @@ use App\Http\Controllers\Member\ProfileController as MemberProfileController;
 |
 */
 
-Route::get('/', function(){
-    return view('auth.login');
-});
+// Route::get('/', function(){
+//     return view('auth.login');
+// });
+// home route
+Route::get('/', HomeController::class)->name('home');
 
 // admin route
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
