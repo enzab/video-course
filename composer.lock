@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "7e2ea12a56656f4df5666f664ba90400",
+    "content-hash": "937a907498f329e7133d352ae7d39073",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -1822,19 +1822,21 @@
         },
         {
             "name": "midtrans/midtrans-php",
-            "version": "2.3.2",
+            "version": "2.5.2",
             "source": {
                 "type": "git",
                 "url": "https://github.com/Midtrans/midtrans-php.git",
-                "reference": "94cdca1eba636b75ec3bdcf338e303068f14025c"
+                "reference": "a1ad0c824449ca8c68c4cf11b3417ad518311d2b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/Midtrans/midtrans-php/zipball/94cdca1eba636b75ec3bdcf338e303068f14025c",
-                "reference": "94cdca1eba636b75ec3bdcf338e303068f14025c",
+                "url": "https://api.github.com/repos/Midtrans/midtrans-php/zipball/a1ad0c824449ca8c68c4cf11b3417ad518311d2b",
+                "reference": "a1ad0c824449ca8c68c4cf11b3417ad518311d2b",
                 "shasum": ""
             },
             "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
                 "php": ">=5.4"
             },
             "require-dev": {
@@ -1849,7 +1851,7 @@
             },
             "notification-url": "https://packagist.org/downloads/",
             "license": [
-                "GPL-3.0"
+                "MIT"
             ],
             "authors": [
                 {
@@ -1869,9 +1871,9 @@
             "homepage": "https://midtrans.com",
             "support": {
                 "issues": "https://github.com/Midtrans/midtrans-php/issues",
-                "source": "https://github.com/Midtrans/midtrans-php/tree/v2.3.2"
+                "source": "https://github.com/Midtrans/midtrans-php/tree/2.5.2"
             },
-            "time": "2020-07-21T06:42:34+00:00"
+            "time": "2021-08-23T08:52:05+00:00"
         },
         {
             "name": "monolog/monolog",
