@@ -17,6 +17,7 @@ use App\Http\Controllers\Member\ReviewController as MemberReviewController;
 use App\Http\Controllers\Member\VideoController as MemberVideoController;
 use App\Http\Controllers\Member\ShowcaseController as MemberShowcaseController;
 use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
+use App\Http\Controllers\Member\ProfileController as MemberProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -90,4 +91,9 @@ Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth',
         Route::delete('/delete/{video}', 'destroy')->name('destroy');
     });
     Route::resource('/transaction', MemberTransactionController::class)->only('index', 'show');
+    Route::controller(MemberProfileController::class)->as('profile.')->group(function(){
+        Route::get('/profile', 'index')->name('index');
+        Route::put('/profile/{user}', 'updateProfile')->name('update');
+        Route::put('/profile/password/{user}', 'updatePassword')->name('password');
+    });
 });
