@@ -20,6 +20,7 @@ use App\Http\Controllers\Member\ShowcaseController as MemberShowcaseController;
 use App\Http\Controllers\Member\TransactionController as MemberTransactionController;
 use App\Http\Controllers\Member\ProfileController as MemberProfileController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Landing\CategoryController as LandingCategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -37,6 +38,8 @@ use App\Http\Controllers\HomeController;
 // });
 // home route
 Route::get('/', HomeController::class)->name('home');
+// category route
+Route::get('/category/{category:slug}', LandingCategoryController::class)->name('category');
 
 // admin route
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
