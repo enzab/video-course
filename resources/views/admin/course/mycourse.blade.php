@@ -85,7 +85,7 @@
                                     </button>
                                     <div class="modal fade" id="modal-lg{{ $data->course->id }}">
                                         <div class="modal-dialog modal-lg">
-                                            <form action="" method="POST">
+                                            <form action="{{ route('admin.review', $data->course->id) }}" method="POST">
                                                 @csrf
                                                 <div class="modal-content">
                                                     <div class="modal-header">

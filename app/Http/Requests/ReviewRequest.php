@@ -13,7 +13,7 @@ class ReviewRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class ReviewRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'rating' => 'max:5|integer',
+            'review' => 'required'
         ];
     }
 }
