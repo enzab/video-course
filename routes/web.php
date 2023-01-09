@@ -21,6 +21,7 @@ use App\Http\Controllers\Member\TransactionController as MemberTransactionContro
 use App\Http\Controllers\Member\ProfileController as MemberProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Landing\CategoryController as LandingCategoryController;
+use App\Http\Controllers\Landing\CartController;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,6 +41,12 @@ use App\Http\Controllers\Landing\CategoryController as LandingCategoryController
 Route::get('/', HomeController::class)->name('home');
 // category route
 Route::get('/category/{category:slug}', LandingCategoryController::class)->name('category');
+// cart route
+Route::controller(CartController::class)->middleware('auth')->as('cart.')->group(function(){
+    Route::get('/cart', 'index')->name('index');
+    Route::post('/cart/{course}', 'store')->name('store');
+    Route::delete('/cart/{cart}', 'delete')->name('destroy');
+});
 
 // admin route
 Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'role:admin']], function(){
