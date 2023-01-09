@@ -22,6 +22,7 @@ use App\Http\Controllers\Member\ProfileController as MemberProfileController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Landing\CategoryController as LandingCategoryController;
 use App\Http\Controllers\Landing\CartController;
+use App\Http\Controllers\Landing\CourseController as LandingCourseController;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,12 @@ use App\Http\Controllers\Landing\CartController;
 // });
 // home route
 Route::get('/', HomeController::class)->name('home');
+// course route
+Route::controller(LandingCourseController::class)->as('course.')->group(function(){
+    Route::get('/course', 'index')->name('index');
+    Route::get('/course/{course:slug}', 'show')->name('show');
+    Route::get('/course/{course:slug}/{video:episode}', 'video')->name('video');
+});
 // category route
 Route::get('/category/{category:slug}', LandingCategoryController::class)->name('category');
 // cart route
