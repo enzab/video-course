@@ -10,6 +10,7 @@ use Laravel\Fortify\Contracts\CreatesNewUsers;
 use Spatie\Permission\Models\Role;
 use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Notification;
+use App\Notifications\NewMember;
 
 class CreateNewUser implements CreatesNewUsers
 {
@@ -45,6 +46,10 @@ class CreateNewUser implements CreatesNewUsers
         ]);
 
         $user->assignRole($role);
+
+        $admin = User::role('admin')->get();
+
+        Notification::send($admin, new NewMember($user));
 
         return $user;
     }

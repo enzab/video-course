@@ -10,6 +10,7 @@ use App\Http\Controllers\Admin\MyCourseController;
 use App\Http\Controllers\Admin\VideoController;
 use App\Http\Controllers\Admin\TransactionController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\NotificationDatabaseController;
 use App\Http\Controllers\Member\DashboardController as MemberDashboardController;
 use App\Http\Controllers\Member\CourseController as MemberCourseController;
 use App\Http\Controllers\Member\MyCourseController as MemberMyCourseController;
@@ -69,6 +70,11 @@ Route::group(['as' => 'admin.', 'prefix' => 'admin', 'middleware' => ['auth', 'r
 
     //admin transaction route
     Route::resource('/transaction', TransactionController::class)->only('index', 'show');
+    // admin marknotification route
+    Route::controller(NotificationDatabaseController::class)->group(function(){
+        Route::post('/mark-as-read/{id}', 'readNotification')->name('markNotification');
+        Route::post('/mark-all-read', 'readAllNotification')->name('markAllRead');
+    });
 });
 
 Route::group(['as' => 'member.', 'prefix' => 'account', 'middleware' => ['auth','role:member|author']], function(){
