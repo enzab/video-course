@@ -62,7 +62,7 @@ Route::get('/review', LandingReviewController::class)->name('review');
 // showcase route
 Route::get('/showcase', LandingShowcaseController::class)->name('showcase');
 // checkout route
-Route::get('/checkout', [CheckoutContoller::class, 'store'])->name('checkout.store');
+Route::get('/checkout', [CheckoutController::class, 'store'])->name('checkout.store');
 
 
 // admin route
